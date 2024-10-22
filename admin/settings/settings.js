@@ -57,6 +57,67 @@ function changePercentOverallinit(){
     })
 }
 
+function masterList_init(){
+    $('#department-selection').prop('disabled',true);
+        $('#employee-home').prop('disabled',true);
+        $('#result-home').prop('disabled',true);
+        $('#home-home').prop('disabled',true);
+    console.log("Records Init");
+    recordForm= `
+    <form action="">
+              <select id="department-selection-result" class="form-control" required style="margin-top:6px" onchange='$("#shift-selection").val("");'>
+                <option value="">DEPARTMENT</option>
+                <option value="2">ATC</option>
+                <option value="1">CNS</option>
+                <option value="5">DRIVERS</option>
+                <option value="4">ELECTRICAL</option>
+                <option value="3">FIRE</option>
+                <option value="6">BPCL</option>
+                <option value="All">All</option>
+              </select>
+                <select id="shift-selection" class="form-control" required  style="margin-top:4px" onchange ='$("#fetch-record-from-date").val("");$("#fetch-record-to-date").val("");'>
+                    <option value="">SHIFT</option>
+                    <option value="S1" id="shift-1">Shift - 1</option>
+                    <option value="S2" id="shift-2">Shift - 2</option>
+                    <option value="S3" id="shift-3">Shift - 3</option>
+                    <option value="GEN" id="general">General</option>
+                    <option value="All">All</option>
+                </select>
+            <input class = 'form-control' style='margin-top:4px;' id='fetch-record-from-date'  type='date'>
+            <input class = 'form-control' style='margin-top:4px;' id='fetch-record-to-date' onchange='fetch_master_list();' type='date'>
+    </form>`;
+    $('#request-table').hide();
+    $('#request-table').html('');
+    $('#shift-form').html(recordForm);
+    $('#shift-form').show();
+}
+
+function fetch_master_list(){
+    const user_data = {
+        userid : document.getElementById('UserId').innerText,
+        departmentId : document.getElementById('department-selection-result').value,
+        shiftId : document.getElementById('shift-selection').value,
+        fromDate : $('#fetch-record-from-date').val(),
+        toDate : $('#fetch-record-to-date').val()
+    };
+    console.log(user_data);
+    fetch('/admin/settings/records/fetch-master-list.php',{
+        method : 'POST',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body : JSON.stringify(user_data)
+    }).then(response => {
+        if(!response.ok){
+            console.error("Error fetching records");
+        }
+        return response.text();
+    }).then(data => {
+        $('#request-table').html(data);
+        $('#request-table').show();
+        $('#request-table').css('height','40vh');
+    });
+}
 function records_init(){
     $('#department-selection').prop('disabled',true);
         $('#employee-home').prop('disabled',true);
@@ -73,6 +134,7 @@ function records_init(){
                 <option value="4">ELECTRICAL</option>
                 <option value="3">FIRE</option>
                 <option value="6">BPCL</option>
+                <option value="All">All</option>
               </select>
                 <select id="shift-selection" class="form-control" required  style="margin-top:4px" onchange ='$("#fetch-record-from-date").val("");$("#fetch-record-to-date").val("");'>
                     <option value="">SHIFT</option>
@@ -80,6 +142,7 @@ function records_init(){
                     <option value="S2" id="shift-2">Shift - 2</option>
                     <option value="S3" id="shift-3">Shift - 3</option>
                     <option value="GEN" id="general">General</option>
+                    <option value="All">All</option>
                 </select>
             <input class = 'form-control' style='margin-top:4px;' id='fetch-record-from-date'  type='date'>
             <input class = 'form-control' style='margin-top:4px;' id='fetch-record-to-date' onchange='fetch_result_date()' type='date'>
