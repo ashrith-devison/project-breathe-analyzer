@@ -49,6 +49,7 @@
         echo "<th>Randomized Time </th>";
         echo "<th>Test Time</th>";
         echo "<th>Results</th>";
+        echo "<th>Master List</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
@@ -61,12 +62,17 @@
             echo "<td>".$department[$data['Department_Id']]."</td>";
             echo "<td>".$data['randomized_time']."</td>";
             echo "<td>".$data['test_time']."</td>";
-
+            $data['randomized_time'] = date("Y-m-d",strtotime($data['randomized_time']));
             echo <<<HTML
                     <td>
                         <button style="color : blue; background-color : white;" onclick='viewResults("{$data['Employee_ID']}", "{$data['Test_ID']}")'>
                         <i class="fas fa-eye"></i>
                         </button>
+                        <td>
+                        <button style="color : blue; background-color : white;" onclick='view_master_list("{$data['Department_Id']}", "{$data['ShiftID']}", "{$data['randomized_time']}")'>
+                        <i class="fas fa-edit"></i>
+                        </button>
+                    </td>
                     </td>
                     HTML;
             echo "</tr>";

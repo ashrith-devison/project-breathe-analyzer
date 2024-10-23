@@ -61,6 +61,34 @@ function viewResults(empid, testid){
     }
 }
 
+function view_master_list(departmentId, shiftId, date){
+    const user_data = {
+        userid : document.getElementById('UserId').innerText,
+        departmentId : departmentId,
+        shiftId : shiftId,
+        fromDate : date,
+        toDate : date
+    };
+    console.log(user_data);
+    fetch('/admin/settings/records/fetch-master-list.php',{
+        method : 'POST',
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body : JSON.stringify(user_data)
+    }).then(response => {
+        if(!response.ok){
+            console.error("Error fetching records");
+        }
+        return response.text();
+    }).then(data => {
+        $('#spotlight').html(data);
+        $('#spotlight').show();
+        $('#spotlight').css('height','40vh');
+        $('#spotlight').css('overflow-y', 'auto');
+        $('#spotlight').css('overflow-x','auto');
+    });
+}
 function closeForm(){
     $('#spotlight').html('');
 }
