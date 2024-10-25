@@ -13,7 +13,7 @@
 
   <title>AAI-Home</title>
 </head>
-<body oncontextmenu="return false;">
+<body oncontextmenu="return false;" id="body">
   <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <div id="script-record"></div>
   <div class="header" style="height: 20vh;background-color: aliceblue;">
@@ -71,7 +71,8 @@
 </div>
   </div>
   
-  <div class="home-content" style="height: 80vh;width: 100vw ; background-image: url('/admin/home-page/images/Airglobe-transformed.jpeg'); background-size: cover; background-repeat: no-repeat; display: flex;">
+    <div class="demo-down">
+    <div class="home-content">
     <div class="container">  
         <div id="shift-form" class="form-group" hidden>
             <form action="">
@@ -97,13 +98,12 @@
       <div class="continue"><button class="btn btn-success" style="position: relative;left: 90%;">Print</button></div>
     </div>
   </div>
-  <div id='spotlight'> 
+  <div id='spotlight'>
   </div>
-      <br>
+  </div>
+  <div class="container  extra-info" id="add-info">
+  </div>
     </div>
-  </div>
-  <div style="height: 20px; width: 20px; padding: 2px; position: absolute; left: 95%; top: 90%;"><a href="/help.html" target='_blank'><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-help"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></a></div>
-  <div style="height: 20px; width: 20px; padding: 2px; position: absolute; left: 5%; top: 90%;"><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#337ab7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-left-dash"><path d="M19 15V9"/><path d="M15 15h-3v4l-7-7 7-7v4h3v6z"/></svg></a></div>
   <script src="/bootstrap-3.4.1/js/bootstrap.min.js"></script>
   <script src="/admin/home-page/home.js"></script>
 </body>

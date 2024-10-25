@@ -199,3 +199,8 @@ function manageUserinit(){
         $('#settings-content').html(data);
     });
 }
+
+function closeTab(){
+    $('#add-info').html('');
+    $('#add-info').hide();
+}

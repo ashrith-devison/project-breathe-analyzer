@@ -27,7 +27,8 @@
             $department[$dept['Department_Id']] = $dept['Department_name'];
         }
         $result = $conn->query($sql);
-        echo "<table class='table'>";
+        echo "<p id='close-button' class='text-end'><button class='btn btn-danger' onclick='closeTab();'>x</button></p>";
+        echo "<table class='table'> ";
         echo "<thead>";
         echo "<tr>";
         echo "<th>Employee ID</th>";

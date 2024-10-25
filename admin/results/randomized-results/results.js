@@ -82,11 +82,9 @@ function view_master_list(departmentId, shiftId, date){
         }
         return response.text();
     }).then(data => {
-        $('#spotlight').html(data);
-        $('#spotlight').show();
-        $('#spotlight').css('height','40vh');
-        $('#spotlight').css('overflow-y', 'auto');
-        $('#spotlight').css('overflow-x','auto');
+        $('#add-info').html(data);
+        $('#add-info').show();
+        
     });
 }
 function closeForm(){
