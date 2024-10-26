@@ -90,3 +90,8 @@ function view_master_list(departmentId, shiftId, date){
 function closeForm(){
     $('#spotlight').html('');
 }
+
+function closeTab(){
+    $('#add-info').html('');
+    $('#add-info').hide();
+}
