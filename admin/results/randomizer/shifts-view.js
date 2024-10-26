@@ -26,8 +26,11 @@ function randomizer(shift,deptid){
         }
         return response.text();
     }).then(data => {
-        const resultname = JSON.parse(data);
-        if(resultname.Error){
+        const resultData = JSON.parse(data);
+        console.log(resultData);
+        const resultname = resultData.employees;
+        console.log(resultname); 
+        if(resultData.Error != "No"){
             let divData = document.getElementById('request-table');
             divData.innerHTML = resultname.Error;
             Swal.fire({
@@ -51,7 +54,8 @@ function randomizer(shift,deptid){
                 empName : resultname,
                 shiftId : shift,
                 deptCode : deptid+'_'+shift,
-                deptId : deptid
+                deptId : deptid,
+                selected : resultData.pending
             };
             fetch('/admin/results/randomizer/report.php', {
                 method : 'POST',

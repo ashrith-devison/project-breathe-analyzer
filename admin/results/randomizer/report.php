@@ -1,11 +1,11 @@
 <?php
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         require '../../../database.php';
-        function updateShiftAssigned($empid,$shift){
+        function updateShiftAssigned($empid,$shift,$status){
             require '../../../database.php';
             $query = "INSERT INTO shift_assigned (Employee_ID,ShiftID) VALUES ($empid,'$shift')";
             $conn->query($query);
-            $query = "INSERT INTO ba_test (Employee_ID) VALUES ($empid)";
+            $query = "INSERT INTO ba_test (Employee_ID,Status) VALUES ($empid,'$status')";
             $conn->query($query);
             $conn->close();
         }
@@ -24,6 +24,7 @@
         $empname = $request->empName;
         $shift = $request->shiftId;
         $deptcode = $request->deptCode;
+        $pendinglist = intval($request->selected);
         $data = array_map(null,$empid,$empname);
         echo "<h4 style='text-align: center;font-size:40px;>Shortlisted People from Randomizer</h4>";
         echo "<h4 style='text-align: center;font-size:20px;'>"."Date: ".date('d-m-Y h:i:s a')."</h4>";
@@ -34,20 +35,34 @@
         echo "<tr>";
         echo "<th>Employee Id</th>";
         echo "<th>Employee Name</th>";
+        echo "<th>Status</th>";
         echo "</tr>";
         echo "</thead><tbody>";
 
         if(!$conn){
             die("Connection Error");
         }
-
+        $count = 0;
         foreach($data as $emp){
-            list($empid, $empname) = $emp;
-            echo "<tr>";
-            echo "<td>".$empid."</td>";
-            echo "<td>".$empname."</td>";
-            updateShiftAssigned(intval($empid),$shift);
-            echo "</tr>";
+            if($count < $pendinglist){
+                list($empid, $empname) = $emp;
+                echo "<tr>";
+                echo "<td>".$empid."</td>";
+                echo "<td>".$empname."</td>";
+                updateShiftAssigned(intval($empid),$shift,"pending");
+                echo "<td>"."Selected"."</td>";
+                echo "</tr>";
+                $count++;
+            }
+            else{
+                list($empid, $empname) = $emp;
+                echo "<tr>";
+                echo "<td>".$empid."</td>";
+                echo "<td>".$empname."</td>";
+                updateShiftAssigned(intval($empid),$shift,"Stand-by");
+                echo "<td>"."Stand-By"."</td>";
+                echo "</tr>";
+            }
         }
         echo "</tbody>";
         updateenvdata($deptcode);
