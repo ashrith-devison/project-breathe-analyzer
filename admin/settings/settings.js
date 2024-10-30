@@ -66,13 +66,9 @@ function masterList_init(){
     recordForm= `
     <form action="">
               <select id="department-selection-result" class="form-control" required style="margin-top:6px" onchange='$("#shift-selection").val("");'>
-                <option value="">DEPARTMENT</option>
-                <option value="2">ATC</option>
-                <option value="1">CNS</option>
-                <option value="5">DRIVERS</option>
-                <option value="4">ELECTRICAL</option>
-                <option value="3">FIRE</option>
-                <option value="6">BPCL</option>
+                <?php
+                    dept_list();
+                ?>
                 <option value="All">All</option>
               </select>
                 <select id="shift-selection" class="form-control" required  style="margin-top:4px" onchange ='$("#fetch-record-from-date").val("");$("#fetch-record-to-date").val("");'>
@@ -127,13 +123,9 @@ function records_init(){
     recordForm= `
     <form action="">
               <select id="department-selection-result" class="form-control" required style="margin-top:6px" onchange='$("#shift-selection").val("");'>
-                <option value="">DEPARTMENT</option>
-                <option value="2">ATC</option>
-                <option value="1">CNS</option>
-                <option value="5">DRIVERS</option>
-                <option value="4">ELECTRICAL</option>
-                <option value="3">FIRE</option>
-                <option value="6">BPCL</option>
+                <?php
+                    dept_list();
+                ?>
                 <option value="All">All</option>
               </select>
                 <select id="shift-selection" class="form-control" required  style="margin-top:4px" onchange ='$("#fetch-record-from-date").val("");$("#fetch-record-to-date").val("");'>

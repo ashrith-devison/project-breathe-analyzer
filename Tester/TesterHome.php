@@ -15,6 +15,7 @@
   <div id="script-record"></div>
   <div class="header" style="height: 20vh;background-color: aliceblue;">
   <p id="UserId" hidden><?php
+    require "../admin/departments/dept-list.php";
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $request = file_get_contents("php://input");
         $request = json_decode($request,true);
@@ -36,12 +37,9 @@
         <svg style="margin-right: 8px; margin-left: 7px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         <select name="" id="department-selection" onchange="fetch_registered_data();"
             style="height: 35px; background-color: #337ab7; color: white; flex-grow: 1;">
-            <option value="">DEPARTMENT</option>
-            <option value="2">ATC</option>
-            <option value="1">CNS</option>
-            <option value="5">DRIVERS</option>
-            <option value="4">ELECTRICAL</option>
-            <option value="3">FIRE</option>
+            <?php
+              dept_list();
+            ?>
         </select>
     </div>
       <div><button type = "button" onclick="employee_home()" class="btn btn-primary" style="display: flex; align-items: center;"><svg style="margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
@@ -68,12 +66,9 @@
         <div id="shift-form" class="form-group" hidden>
             <form action="">
               <select id="department-selection-result" class="form-control" required style="margin-top:6px">
-                <option value="">DEPARTMENT</option>
-                <option value="2">ATC</option>
-                <option value="1">CNS</option>
-                <option value="5">DRIVERS</option>
-                <option value="4">ELECTRICAL</option>
-                <option value="3">FIRE</option>
+              <?php
+                dept_list();
+              ?>
               </select>
                 <select id="shift-selection" class="form-control" required onchange="randomized_data();" style="margin-top:4px">
                     <option value="">SHIFT</option>
