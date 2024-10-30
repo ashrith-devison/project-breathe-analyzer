@@ -1,6 +1,6 @@
 <?php
     function dept_list(){
-        require "../database.php";
+        require __DIR__."../../../database.php";
         $sql = "SELECT * FROM Department";
         $depts = $conn->query($sql);
         echo "<option value='' selected>DEPARTMENT</option>";

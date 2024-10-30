@@ -30,7 +30,7 @@ function addEmployeeinit(){
     loadScript('/admin/settings/AddEmployee/employee-settings.js',()=>{
         console.log("Add Employee Option Enabled");
     });
-    fetch('/admin/settings/AddEmployee/profile-fill.html')
+    fetch('/admin/settings/AddEmployee/profile-fill.php')
     .then(response =>{
         if(!response.ok){
             console.error("Error in fetching the Employee Add Option");
@@ -181,7 +181,7 @@ function manageUserinit(){
     loadScript('/admin/settings/manage-users/users.js',()=>{
         console.log("Manage User Script Loaded");
     });
-    fetch('/admin/settings/manage-users/users.html')
+    fetch('/admin/settings/manage-users/users.php')
     .then(response => {
         if(!response.ok){
             console.error("Error fetching manageUser.html");

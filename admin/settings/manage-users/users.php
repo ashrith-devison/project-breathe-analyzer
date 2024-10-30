@@ -1,34 +1,43 @@
 
-<form onsubmit="addEmployeeDB();return false;" autocomplete="off">
+<form onsubmit="allocateRole();return false;" autocomplete="off">
     <div class="form-group">
         <label for=""><h4>Employee ID : </h4></label>
-        <input type="number" id="employee-id-add">
+        <input type="number" id="employee-id" onchange="getDetails();">
     </div>
     <div class="form-group">
         <label for="input2"><h4>Employee Name : </h4></label>
-        <input type="text" id="employee-name-add">
+        <input type="text" id="employee-name" disabled>
     </div>
     <div class="form-group">
         <label for="select1"><h4>Department :</h4></label>
-        <select id="department-id-add">
-            <option value=""></option>
-            <option value="2">ATC</option>
-            <option value="1">CNS</option>
-            <option value="5">DRIVERS</option>
-            <option value="4">ELECTRICAL</option>
-            <option value="3">FIRE</option>
-            <option value="6">BPCL</option>
+        <select id="department-id" disabled>
+            <?php
+                require_once '../../departments/dept-list.php';
+                dept_list();
+            ?>
         </select>
     </div>
     <div class="form-group">
         <label for="input1"><h4>Designation : </h4></label>
-        <input type="text" id="designation-add">
+        <input type="text" id="designation" disabled>
     </div>
     <div class="form-group">
         <label for="email-add"><h4>Email : </h4></label>
-        <input type="email" id="email-add">
+        <input type="email" id="employee-email" disabled>
     </div>
-    <button type="submit">Add to List</button>
+    <div class="form-group">
+        <label for="select1"><h4>Department :</h4></label>
+        <select id="manage-role">
+            <option value=""></option>
+            <option value="ADMIN">Admin</option>
+            <option value="HOD_2">ATC HOD</option>
+            <option value="HOD_1">CNS HOD</option>
+            <option value="HOD_5">DRIVERS HOD</option>
+            <option value="HOD_4">ELECTRICAL HOD</option>
+            <option value="HOD_3">FIRE HOD</option>
+        </select>
+    </div>
+    <button type="submit">Allocate</button>
 </form>
 
 <style>
