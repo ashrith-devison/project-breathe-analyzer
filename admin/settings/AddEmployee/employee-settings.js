@@ -36,6 +36,7 @@ function addEmployeeDB(){
         designation : $('#designation-add').val(),
         email : $('#email-add').val(),
     };
+    console.log(credentials);
     var inputStatus = 0;
     for(var key in credentials){
         if(credentials[key] === ''){

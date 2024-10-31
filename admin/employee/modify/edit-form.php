@@ -25,12 +25,10 @@
         <label name="department">Department</label>
         <br>
         <select id="dept-id" name="department">
-          <option value=""></option>
-          <option value="2">ATC</option>
-          <option value="1">CNS</option>
-          <option value="5">DRIVERS</option>
-          <option value="4">ELECTRICAL</option>
-          <option value="3">FIRE</option>
+          <?php
+            require_once '../../departments/dept-list.php';
+            dept_list();
+          ?>
         </select>
       </fieldset>
       <fieldset>

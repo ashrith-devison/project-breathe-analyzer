@@ -20,7 +20,7 @@ function editEmployeeDetails(empid){
             }
             return response.json();
         }).then(data =>{
-            fetch('/admin/employee/modify/edit-form.html')
+            fetch('/admin/employee/modify/edit-form.php')
             .then(response => {
                 if(!response.ok){
                     console.error("Error in Loading Form Template");
