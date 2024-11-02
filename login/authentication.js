@@ -2,14 +2,14 @@
 // Description: This file contains the authentication logic for the login page.
 $(()=>{
     user_role = atob(sessionStorage.getItem('role'));
-auth_roles = ['HOD_1','HOD_2','HOD_3','HOD_4','HOD_5','HOD_6','admin'];
+auth_roles = ['admin','HOD_1','HOD_2','HOD_3','HOD_4','HOD_5','HOD_6','HOD_7','HOD_8'];
 var access = 1;
 for(var role in auth_roles){
     if(user_role === auth_roles[role]){
-        var roleIndex = auth_roles.indexOf(auth_roles[role]);
-        const dept = roleIndex + 1;
+        const roleIndex = auth_roles.indexOf(auth_roles[role]);
+        const dept = roleIndex;
         console.log(roleIndex);
-        if(roleIndex == 6){
+        if(roleIndex == 0){
             console.log("Admin Login");
             Swal.fire({
                 icon : 'success',

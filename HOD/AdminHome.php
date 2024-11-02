@@ -39,12 +39,10 @@
         <select name="" id="department-selection" onchange="fetch_allocation_data();"
             style="height: 35px; background-color: #337ab7; color: white; flex-grow: 1;">
             <option value="">DEPARTMENT</option>
-            <option value="2">ATC</option>
-            <option value="1">CNS</option>
-            <option value="5">DRIVERS</option>
-            <option value="4">ELECTRICAL</option>
-            <option value="3">FIRE</option>
-            <option value="6">BPCL</option>
+            <?php
+              require_once "../admin/departments/dept-list.php";
+              dept_list();
+            ?>
         </select>
     </div>
       <div><button type = "button" onclick="employee_home()" class="btn btn-primary" style="display: flex; align-items: center;"><svg style="margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
@@ -75,11 +73,10 @@
             <form action="">
               <select id="department-selection-result" class="form-control" required style="margin-top:6px">
                 <option value="">DEPARTMENT</option>
-                <option value="2">ATC</option>
-                <option value="1">CNS</option>
-                <option value="5">DRIVERS</option>
-                <option value="4">ELECTRICAL</option>
-                <option value="3">FIRE</option>
+                <?php
+                  require_once "../admin/departments/dept-list.php";
+                  dept_list();
+                ?>
               </select>
                 <select id="shift-selection" class="form-control" required onchange="randomized_data();" style="margin-top:4px">
                     <option value="">SHIFT</option>
